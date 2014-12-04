@@ -7,6 +7,7 @@ ENV DEBIAN-FRONTEND noninteractive
 ENV PATH /usr/lib/rstudio-server/bin/:$PATH   
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     file \
     git \
     libcurl4-openssl-dev \
@@ -36,7 +37,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 8787
 
-## Should we move Rdevel/RD link back to R so that rstudio uses it?
+## Run the latest R versions 
 RUN cd /usr/local/bin && mv Rdevel R && mv Rscriptdevel Rscript
 
 ## To have a container run a persistent task, we use the very simple supervisord as recommended in Docker documentation.
