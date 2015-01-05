@@ -35,6 +35,8 @@ RUN apt-get update \
 	hadley/testthat \
 	hadely/tidyr \
 	klutometis/roxygen \
+	ramnathv/htmlwidgets \ 
+	rstudio/dygraphs \
 	rstudio/leaflet \
 	rstudio/packrat \
 	rstudio/rmarkdown \
