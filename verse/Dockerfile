@@ -33,7 +33,7 @@ RUN apt-get update \
 	hadley/rvest \
 	hadley/stringr \
 	hadley/testthat \
-	hadely/tidyr \
+	hadley/tidyr \
 	klutometis/roxygen \
 	ramnathv/htmlwidgets \ 
 	rstudio/dygraphs \
