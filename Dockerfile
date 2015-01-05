@@ -21,26 +21,30 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 && install2.r --error httr 
 
 COPY latest.R .
-
 RUN Rscript latest.R \ 
 && dpkg -i rstudio-server-daily-amd64.deb \
 && rm rstudio-server-*-amd64.deb \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
-## This shell script is executed by supervisord when it is run by CMD, configures env variables
-COPY userconf.sh /usr/bin/userconf.sh
 
-## Configure persistent daemon serving RStudio-server on (container) port 8787
+## Pandoc templtes for stand-alone mode
+RUN mkdir /opt/pandoc \
+	&& git clone https://github.com/jgm/pandoc-templates.git /opt/pandoc/templates \
+	&& chown -R root:staff /opt/pandoc/templates \
+	&& mkdir /root/.pandoc && mkdir -p /home/docker/.pandoc \
+	&& ln -s /opt/pandoc/templates /root/.pandoc/templates \
+	&& ln -s /opt/pandoc/templates /home/docker/.pandoc/templates  
+
+## Default system configuration:
+RUN  git config --system user.name docker \
+	&& git config --system user.email docker@email.com \
+	&& git config --system push.default simple \
+	&& echo '"\e[5~": history-search-backward' >> /etc/inputrc \
+	&& echo '"\e[6~": history-search-backward' >> /etc/inputrc 
+
 RUN mkdir -p /var/log/supervisor
+COPY userconf.sh /usr/bin/userconf.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 EXPOSE 8787
-
-## Run the latest R versions 
-RUN cd /usr/local/bin && mv Rdevel R && mv Rscriptdevel Rscript
-
-## To have a container run a persistent task, we use the very simple supervisord as recommended in Docker documentation.
 CMD ["/usr/bin/supervisord"] 
-
-
