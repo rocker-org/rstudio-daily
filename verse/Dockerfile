@@ -22,6 +22,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/ \
 	&& install2.r --error devtools \
 	&& installGithub.r \
+	eddelbuettel/bh \
 	hadley/assertthat \
 	hadley/devtools \
 	hadley/dplyr \
@@ -36,6 +37,7 @@ RUN apt-get update \
 	hadley/tidyr \
 	klutometis/roxygen \
 	ramnathv/htmlwidgets \ 
+	RcppCore/Rcpp \
 	rstudio/dygraphs \
 	rstudio/leaflet \
 	rstudio/packrat \
