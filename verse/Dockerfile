@@ -42,6 +42,7 @@ RUN apt-get update \
 	rstudio/leaflet \
 	rstudio/packrat \
 	rstudio/rmarkdown \
+  rstudio/rticles \
 	rstudio/shiny \
 	yihui/knitr 
 
