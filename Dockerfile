@@ -25,26 +25,40 @@ RUN Rscript latest.R \
 && dpkg -i rstudio-server-daily-amd64.deb \
 && rm rstudio-server-*-amd64.deb \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
-&& ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
+&& ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin \
+	&& apt-get clean \ 
+	&& rm -rf /var/lib/apt/lists/
 
 
-## Pandoc templtes for stand-alone mode
+## A default user system configuration. For historical reasons,
+## we want user to be 'rstudio', but it is 'docker' in r-base
+RUN usermod -l rstudio docker \
+	&& usermod -m -d /home/rstudio rstudio \
+	&& groupmod -n rstudio docker \
+	&& git config --system user.name rstudio \
+	&& git config --system user.email rstudio@example.com \
+	&& git config --system push.default simple \
+	&& echo '"\e[5~": history-search-backward' >> /etc/inputrc \
+	&& echo '"\e[6~": history-search-backward' >> /etc/inputrc \
+	&& echo "rstudio:rstudio" | chpasswd
+
+## RStudio pandoc doesn't provide pandoc templates needed for stand-alone mode outside of RStudio
 RUN mkdir /opt/pandoc \
 	&& git clone https://github.com/jgm/pandoc-templates.git /opt/pandoc/templates \
 	&& chown -R root:staff /opt/pandoc/templates \
-	&& mkdir /root/.pandoc && mkdir -p /home/docker/.pandoc \
+	&& mkdir /root/.pandoc \
+	&& mkdir -p /home/rstudio/.pandoc \
 	&& ln -s /opt/pandoc/templates /root/.pandoc/templates \
-	&& ln -s /opt/pandoc/templates /home/docker/.pandoc/templates  
+	&& ln -s /opt/pandoc/templates /home/rstudio/.pandoc/templates 
 
-## Default system configuration:
-RUN  git config --system user.name docker \
-	&& git config --system user.email docker@email.com \
-	&& git config --system push.default simple \
-	&& echo '"\e[5~": history-search-backward' >> /etc/inputrc \
-	&& echo '"\e[6~": history-search-backward' >> /etc/inputrc 
-
-RUN mkdir -p /var/log/supervisor
+## User config and supervisord for persistant RStudio session
 COPY userconf.sh /usr/bin/userconf.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN mkdir -p /var/log/supervisor \
+	&& chgrp staff /var/log/supervisor \
+	&& chmod g+w /var/log/supervisor \
+	&& chgrp staff /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 8787
-CMD ["/usr/bin/supervisord"] 
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"] 
