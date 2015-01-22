@@ -61,4 +61,9 @@ RUN mkdir -p /var/log/supervisor \
 
 EXPOSE 8787
 
+## Have RStudio run with the pre-release R as well
+RUN cd /usr/local/bin \
+  && mv Rdevel R \
+  && mv Rscriptdevel Rscript
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"] 
