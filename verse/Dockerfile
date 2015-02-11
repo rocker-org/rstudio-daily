@@ -7,7 +7,7 @@ FROM rocker/rstudio-daily
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
     build-essential \
     default-jre \
     libcairo2-dev \
@@ -17,32 +17,32 @@ RUN apt-get update \
     libsqlite3-dev \
     libxslt1-dev \
     libxt-dev \
-	&& R CMD javareconf \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/ \
-	&& install2.r --error devtools \
-	&& installGithub.r \
-	eddelbuettel/bh \
-	hadley/assertthat \
-	hadley/devtools \
-	hadley/dplyr \
-	hadley/ggplot2 \
-	hadley/httr \
-  hadley/lineprof \
-	hadley/plyr \
-	hadley/reshape \
-	hadley/rvest \
-	hadley/stringr \
-	hadley/testthat \
-	hadley/tidyr \
-	klutometis/roxygen \
-	ramnathv/htmlwidgets \ 
-	RcppCore/Rcpp \
-	rstudio/dygraphs \
-	rstudio/leaflet \
-	rstudio/packrat \
-	rstudio/rmarkdown \
-  rstudio/rticles \
-	rstudio/shiny \
-	yihui/knitr 
+  && R CMD javareconf \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ \
+  && install2.r --error devtools \
+  && installGithub.r \
+    RcppCore/Rcpp \
+    eddelbuettel/bh \
+    rstudio/shiny \
+    hadley/assertthat \
+    hadley/devtools \
+    hadley/dplyr \
+    hadley/ggplot2 \
+    hadley/httr \
+    hadley/lineprof \
+    hadley/plyr \
+    hadley/reshape \
+    hadley/rvest \
+    hadley/stringr \
+    hadley/testthat \
+    hadley/tidyr \
+    klutometis/roxygen \
+    ramnathv/htmlwidgets \ 
+    rstudio/dygraphs \
+    rstudio/leaflet \
+    rstudio/packrat \
+    rstudio/rmarkdown \
+    rstudio/rticles \
+    yihui/knitr 
 
