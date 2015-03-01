@@ -31,7 +31,6 @@ RUN apt-get update \
     hadley/ggplot2 \
     hadley/httr \
     hadley/lineprof \
-    hadley/plyr \
     hadley/reshape \
     hadley/rvest \
     hadley/stringr \
@@ -44,5 +43,7 @@ RUN apt-get update \
     rstudio/packrat \
     rstudio/rmarkdown \
     rstudio/rticles \
-    yihui/knitr 
+    yihui/knitr \
+    yihui/servr \
+    jimhester/covr
 
