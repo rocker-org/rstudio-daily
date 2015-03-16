@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && wget -q http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \ 
   && dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
   && rm libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
-  && install2.r --error httr 
+  && install2.r -r http://cran.rstudio.com --error httr 
 
 COPY latest.R .
 RUN Rscript latest.R \ 
