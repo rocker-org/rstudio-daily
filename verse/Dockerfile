@@ -20,7 +20,7 @@ RUN apt-get update \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
-  && install2.r --error devtools \
+  && install2.r --repo http://cran.rstudio.com --error devtools \
   && installGithub.r \
     RcppCore/Rcpp \
     eddelbuettel/bh \
