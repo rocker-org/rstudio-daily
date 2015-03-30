@@ -10,7 +10,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential \
     default-jre \
-    libcairo2-dev \
+    libcairo2-dev/unstable \
     libgsl0-dev \
     libmysqlclient-dev \
     libpq-dev \
