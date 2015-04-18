@@ -25,13 +25,18 @@ RUN apt-get update \
     RcppCore/Rcpp \
     eddelbuettel/bh \
     rstudio/shiny \
+    hadley/xml2 \
     hadley/assertthat \
     hadley/devtools \
     hadley/dplyr \
+    hadely/haven \
     hadley/ggplot2 \
     hadley/httr \
     hadley/lineprof \
+    hadley/purrr \
     hadley/reshape \
+    hadley/readr \
+    hadley/readxl \
     hadley/rvest \
     hadley/stringr \
     hadley/testthat \
