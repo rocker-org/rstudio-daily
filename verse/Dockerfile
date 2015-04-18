@@ -29,7 +29,7 @@ RUN apt-get update \
     hadley/assertthat \
     hadley/devtools \
     hadley/dplyr \
-    hadely/haven \
+    hadley/haven \
     hadley/ggplot2 \
     hadley/httr \
     hadley/lineprof \
