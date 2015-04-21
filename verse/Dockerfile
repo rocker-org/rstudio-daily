@@ -52,5 +52,6 @@ RUN apt-get update \
     rstudio/rmarkdown \
     rstudio/rticles \
     yihui/servr \
-    jimhester/covr
+    jimhester/covr \
+    jimhester/lintr
 
