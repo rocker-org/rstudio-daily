@@ -41,6 +41,9 @@ RUN apt-get update \
     hadley/stringr \
     hadley/testthat \
     hadley/tidyr \
+    yihui/formatR \
+    yihui/highr \
+    yihui/knitr \
     klutometis/roxygen \
     ramnathv/htmlwidgets \ 
     rstudio/dygraphs \
@@ -48,7 +51,6 @@ RUN apt-get update \
     rstudio/packrat \
     rstudio/rmarkdown \
     rstudio/rticles \
-    yihui/knitr \
     yihui/servr \
     jimhester/covr
 
