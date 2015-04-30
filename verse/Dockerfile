@@ -18,8 +18,10 @@ RUN apt-get update \
     build-essential \
     default-jdk \
     default-jre \
+    libblas-dev \
     libcairo2-dev/unstable \
     libgsl0-dev \
+    liblapack-dev \
     libmysqlclient-dev \
     libpq-dev \
     libsqlite3-dev \
