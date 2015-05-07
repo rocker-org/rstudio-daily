@@ -41,6 +41,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/ \
   && install2.r --repo http://cran.rstudio.com --error \
     data.table \
+    DBI \
     devtools \
     igraph \
     Lahman \
