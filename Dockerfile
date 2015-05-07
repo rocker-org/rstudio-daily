@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     file \
     git \
+    libapparmor1 \
     libcurl4-openssl-dev \
     psmisc \
     r-cran-xml \
