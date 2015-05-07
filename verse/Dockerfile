@@ -25,7 +25,7 @@ RUN apt-get update \
     libgsl0-dev \
     liblapack-dev \
     libmysqlclient-dev \
-    libpq-dev \
+    libpq-dev/unstable \
     libsqlite3-dev \
     libv8-dev \
     libxslt1-dev \
