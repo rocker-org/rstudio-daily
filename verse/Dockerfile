@@ -42,9 +42,9 @@ RUN apt-get update \
     data.table \
     devtools \
     igraph \
-    gmcv \
     Lahman \
     microbenchmark \
+    mgcv \
     nycflights13 \
     RMySQL \
     RODBC \
