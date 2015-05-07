@@ -16,6 +16,8 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential \
+    cdbs \ 
+    debhelper \
     default-jdk \
     default-jre \
     libblas-dev \
@@ -28,14 +30,13 @@ RUN apt-get update \
     libv8-dev \
     libxslt1-dev \
     libxt-dev \
-    libiodbc2-dev \
+    unixodbc-dev \
     libodbc1 \
     odbc-postgresql \
     libmyodbc \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
-  && apt-get build-dep r-cran-rodbc \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
