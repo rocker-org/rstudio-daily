@@ -28,13 +28,28 @@ RUN apt-get update \
     libv8-dev \
     libxslt1-dev \
     libxt-dev \
+    libiodbc2-dev \
+    libodbc1 \
+    odbc-postgresql \
+    libmyodbc \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
-  && install2.r --repo http://cran.rstudio.com --error devtools igraph \
+  && install2.r --repo http://cran.rstudio.com --error \
+    data.table \
+    devtools \
+    igraph \
+    gmcv \
+    Lahman \
+    microbenchmark \
+    nycflights13 \
+    RMySQL \
+    RODBC \
+    RPostgreSQL \
+    RSQLite \
   && installGithub.r \
     RcppCore/Rcpp \
     eddelbuettel/bh \
