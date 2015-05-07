@@ -53,6 +53,8 @@ RUN apt-get update \
     RODBC \
     RPostgreSQL \
     RSQLite \
+    XML \
+    RCurl \
   && installGithub.r \
     RcppCore/Rcpp \
     eddelbuettel/bh \
