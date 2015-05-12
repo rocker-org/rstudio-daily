@@ -88,5 +88,7 @@ RUN apt-get update \
     rstudio/rticles \
     yihui/servr \
     jimhester/covr \
-    jimhester/lintr
-
+    jimhester/lintr \
+    rich-iannone/DiagrammeR \
+    rich-iannone/UnidecodeR \
+    dgrtwo/broom
