@@ -41,7 +41,7 @@ RUN apt-get update \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
-  && install2.r --repo http://cran.rstudio.com --error \
+  && install2.r --repo http://cran.rstudio.com --repo http://carlboettiger.info/drat --error \
     data.table \
     DBI \
     devtools \
@@ -56,39 +56,36 @@ RUN apt-get update \
     RSQLite \
     XML \
     RCurl \
-  && installGithub.r \
-    RcppCore/Rcpp \
-    eddelbuettel/bh \
-    rstudio/shiny \
-    hadley/xml2 \
-    hadley/assertthat \
-    hadley/devtools \
-    hadley/dplyr \
-    hadley/haven \
-    hadley/ggplot2 \
-    hadley/httr \
-    hadley/lineprof \
-    hadley/purrr \
-    hadley/reshape \
-    hadley/readr \
-    hadley/readxl \
-    hadley/rvest \
-    hadley/stringr \
-    hadley/testthat \
-    hadley/tidyr \
-    yihui/formatR \
-    yihui/highr \
-    yihui/knitr \
-    klutometis/roxygen \
-    ramnathv/htmlwidgets \ 
-    rstudio/dygraphs \
-    rstudio/leaflet \
-    rstudio/packrat \
-    rstudio/rmarkdown \
-    rstudio/rticles \
-    yihui/servr \
-    jimhester/covr \
+    shiny \
+    gxml2 \
+    gassertthat \
+    gdevtools \
+    gdplyr \
+    ghaven \
+    gggplot2 \
+    ghttr \
+    glineprof \
+    gpurrr \
+    greshape \
+    greadr \
+    greadxl \
+    grvest \
+    gstringr \
+    gtestthat \
+    gtidyr \
+    formatR \
+    highr \
+    knitr \
+    roxygen \
+    htmlwidgets \ 
+    dygraphs \
+    leaflet \
+    packrat \
+    rmarkdown \
+    rticles \
+    servr \
+    covr \
     jimhester/lintr \
-    rich-iannone/DiagrammeR \
-    rich-iannone/UnidecodeR \
-    dgrtwo/broom
+    DiagrammeR \
+    UnidecodeR \
+    room
