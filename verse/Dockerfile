@@ -76,7 +76,7 @@ RUN apt-get update \
     formatR \
     highr \
     knitr \
-    roxygen \
+    roxygen2 \
     htmlwidgets \ 
     dygraphs \
     leaflet \
