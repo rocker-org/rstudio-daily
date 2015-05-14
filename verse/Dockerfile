@@ -57,22 +57,22 @@ RUN apt-get update \
     XML \
     RCurl \
     shiny \
-    gxml2 \
-    gassertthat \
-    gdevtools \
-    gdplyr \
-    ghaven \
-    gggplot2 \
-    ghttr \
-    glineprof \
-    gpurrr \
-    greshape \
-    greadr \
-    greadxl \
-    grvest \
-    gstringr \
-    gtestthat \
-    gtidyr \
+    xml2 \
+    assertthat \
+    devtools \
+    dplyr \
+    haven \
+    ggplot2 \
+    httr \
+    lineprof \
+    purrr \
+    reshape \
+    readr \
+    readxl \
+    rvest \
+    stringr \
+    testthat \
+    tidyr \
     formatR \
     highr \
     knitr \
@@ -85,7 +85,7 @@ RUN apt-get update \
     rticles \
     servr \
     covr \
-    jimhester/lintr \
+    lintr \
     DiagrammeR \
     UnidecodeR \
     room
