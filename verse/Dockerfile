@@ -88,4 +88,4 @@ RUN apt-get update \
     lintr \
     DiagrammeR \
     UnidecodeR \
-    room
+    broom
