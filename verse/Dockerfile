@@ -38,6 +38,7 @@ RUN apt-get update \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
+    inkscape \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
