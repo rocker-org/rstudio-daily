@@ -25,7 +25,8 @@ RUN apt-get update \
     libgsl0-dev \
     liblapack-dev \
     libmysqlclient-dev \
-    libpq-dev \
+    libssl-dev/unstable \
+    libpq-dev/unstable \
     libsqlite3-dev \
     libv8-dev \
     libxslt1-dev \
@@ -37,10 +38,11 @@ RUN apt-get update \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
     vim \
+    inkscape \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
-  && install2.r --repo http://cran.rstudio.com --error \
+  && install2.r --repo http://cran.rstudio.com --repo http://carlboettiger.info/drat --error \
     data.table \
     DBI \
     devtools \
@@ -53,37 +55,38 @@ RUN apt-get update \
     RODBC \
     RPostgreSQL \
     RSQLite \
-  && installGithub.r \
-    RcppCore/Rcpp \
-    eddelbuettel/bh \
-    rstudio/shiny \
-    hadley/xml2 \
-    hadley/assertthat \
-    hadley/devtools \
-    hadley/dplyr \
-    hadley/haven \
-    hadley/ggplot2 \
-    hadley/httr \
-    hadley/lineprof \
-    hadley/purrr \
-    hadley/reshape \
-    hadley/readr \
-    hadley/readxl \
-    hadley/rvest \
-    hadley/stringr \
-    hadley/testthat \
-    hadley/tidyr \
-    yihui/formatR \
-    yihui/highr \
-    yihui/knitr \
-    klutometis/roxygen \
-    ramnathv/htmlwidgets \ 
-    rstudio/dygraphs \
-    rstudio/leaflet \
-    rstudio/packrat \
-    rstudio/rmarkdown \
-    rstudio/rticles \
-    yihui/servr \
-    jimhester/covr \
-    jimhester/lintr
-
+    XML \
+    RCurl \
+    shiny \
+    xml2 \
+    assertthat \
+    devtools \
+    dplyr \
+    haven \
+    ggplot2 \
+    httr \
+    lineprof \
+    purrr \
+    reshape \
+    readr \
+    readxl \
+    rvest \
+    stringr \
+    testthat \
+    tidyr \
+    formatR \
+    highr \
+    knitr \
+    roxygen2 \
+    htmlwidgets \ 
+    dygraphs \
+    leaflet \
+    packrat \
+    rmarkdown \
+    rticles \
+    servr \
+    covr \
+    lintr \
+    DiagrammeR \
+    UnidecodeR \
+    broom
