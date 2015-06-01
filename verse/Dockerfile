@@ -14,7 +14,7 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
   && echo 'deb-src http://http.debian.net/debian testing main' >> /etc/apt/sources.list
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
+  && apt-get install -y -t unstable --no-install-recommends \
     build-essential \
     cdbs \ 
     debhelper \
