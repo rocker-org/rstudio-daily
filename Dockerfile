@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y -t unstable --no-install-recommends \
     git \
     libapparmor1 \
     libcurl4-openssl-dev \
+    libssl-dev \
     libedit2 \
     psmisc \
     supervisor \
