@@ -6,7 +6,7 @@ MAINTAINER "Carl Boettiger and Dirk Eddelbuettel" rocker-maintainers@eddelbuette
 ENV DEBIAN-FRONTEND noninteractive  
 ENV PATH /usr/lib/rstudio-server/bin/:$PATH   
 
-RUN apt-get update 
+RUN apt-get update \
   && apt-get install -y -t unstable --no-install-recommends \
     libxml2-dev \
   && install2.r httr XML downloader \
@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y -t unstable --no-install-recommends \
     git \
     libapparmor1 \
     libcurl4-openssl-dev \
+    libssl-dev \
+    libedit2 \
     psmisc \
     supervisor \
     sudo
