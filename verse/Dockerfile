@@ -15,18 +15,17 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 
 RUN apt-get update \
   && apt-get install -y -t unstable --no-install-recommends \
-    build-essential \
     cdbs \ 
     debhelper \
     default-jdk \
     default-jre \
     libblas-dev \
-    libcairo2-dev/unstable \
+    libcairo2-dev \
     libgsl0-dev \
     liblapack-dev \
     libmysqlclient-dev \
-    libssl-dev/unstable \
-    libpq-dev/unstable \
+    libssl-dev \
+    libpq-dev \
     libsqlite3-dev \
     libv8-dev \
     libxslt1-dev \
@@ -88,4 +87,6 @@ RUN apt-get update \
     lintr \
     DiagrammeR \
     UnidecodeR \
-    broom
+    broom \
+  && R -e 'update.packages(ask=FALSE)'
+
