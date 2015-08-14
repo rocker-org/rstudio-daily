@@ -15,6 +15,8 @@ RUN echo 'deb http://debian-r.debian.net/debian-r/ unstable main' >> /etc/apt/so
 
 RUN apt-get update \
   && apt-get install -y -t unstable --no-install-recommends \
+    aspell \
+    aspell-en \
     cdbs \ 
     debhelper \
     default-jdk \
