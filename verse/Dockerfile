@@ -66,7 +66,6 @@ RUN apt-get update \
     ggplot2 \
     httr \
     lineprof \
-    purrr \
     reshape \
     readr \
     readxl \
