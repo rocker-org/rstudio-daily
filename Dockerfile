@@ -30,6 +30,7 @@ RUN dpkg -i rstudio-server-daily-amd64.deb \
   && rm rstudio-server-*-amd64.deb \
   && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
   && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin \
+  && mkdir /root/.pandoc && ln -s /opt/pandoc/templates /root/.pandoc/templates \
   && apt-get clean \ 
   && rm -rf /var/lib/apt/lists/
 

@@ -32,12 +32,13 @@ RUN apt-get update \
     libv8-dev \
     libxslt1-dev \
     libxt-dev \
-    unixodbc-dev \
     libodbc1 \
-    odbc-postgresql \
     libmyodbc \
+    odbc-postgresql \
+    qpdf \
     r-cran-rgl \
     r-cran-rsqlite.extfuns \
+    unixodbc-dev \
     vim \
   && R CMD javareconf \
   && apt-get clean \
