@@ -35,8 +35,9 @@ RUN dpkg -i rstudio-server-daily-amd64.deb \
   && mkdir -p /opt/pandoc/templates && tar zxf 1.15.0.6.tar.gz \
   && cp -r pandoc-templates*/* /opt/pandoc/templates && rm -rf pandoc-templates* \
   && mkdir /root/.pandoc && ln -s /opt/pandoc/templates /root/.pandoc/templates \
-  && apt-get clean \ 
-  && rm -rf /var/lib/apt/lists/
+  && apt-get clean
+## Not clear why rm -rf is failing with "dir isn't empty". we said -f!
+#  && rm -rf /var/lib/apt/lists/
 
 ## A default user system configuration. For historical reasons,
 ## we want user to be 'rstudio', but it is 'docker' in r-base
