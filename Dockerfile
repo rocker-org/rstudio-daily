@@ -58,7 +58,6 @@ RUN usermod -l rstudio docker \
   && echo '"\e[6~": history-search-backward' >> /etc/inputrc \
   && echo "rstudio:rstudio" | chpasswd
 
-COPY add-students.sh /usr/local/bin/add-students
 COPY run.sh /etc/service/rstudio/run
 
 EXPOSE 8787
