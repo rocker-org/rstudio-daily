@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ## Don't attempt to run if we are not root
 if [ "$EUID" -ne 0 ]
 	then echo "Please run as root"
@@ -27,22 +26,23 @@ if [ "$USERID" -ne 1000 ]
 		useradd -m $USER -u $USERID
 		mkdir /home/$USER
 		chown -R $USER /home/$USER
-else
-	## RENAME the existing user. (because deleting a user can be trouble, i.e. if we're logged in as that user)
-	usermod -l $USER rstudio
-	usermod -m -d /home/$USER $USER 
-	groupmod -n $USER rstudio 
-	echo "USER is now $USER"
+  elif [ "$USER" != "rstudio" ]
+  then	## RENAME the existing user. (because deleting a user can be trouble, i.e. if we're logged in as that user)
+	  usermod -l $USER rstudio
+	  usermod -m -d /home/$USER $USER 
+	  groupmod -n $USER rstudio 
+	  echo "USER is now $USER"
 fi
-## Assing password to user
+
+## Adding a password to user
 echo "$USER:$PASSWORD" | chpasswd
 
 ## Configure git for the User. Since root is running this script, cannot use `git config`
-echo -e "[user]\n\tname = $USER\n\temail = $EMAIL\n\n[credential]\n\thelper = cache\n\n[push]\n\tdefault = simple\n\n[core]\n\teditor = vim\n" > /home/$USER/.gitconfig
-echo ".gitconfig written for $USER"
+#echo -e "[user]\n\tname = $USER\n\temail = $EMAIL\n\n[credential]\n\thelper = cache\n\n[push]\n\tdefault = simple\n\n[core]\n\teditor = vim\n" > /home/$USER/.gitconfig
+#echo ".gitconfig written for $USER"
 
 ## Let user write to /usr/local/lib/R/site.library
-addgroup $USER staff
+addgroup --quiet $USER staff
 
 # Use Env flag to know if user should be added to sudoers
 if [ "$ROOT" == "TRUE" ]
@@ -51,7 +51,14 @@ if [ "$ROOT" == "TRUE" ]
 		echo "$USER added to sudoers"
 fi
 
-## Symlink pandoc templates to default directory
-mkdir /home/$USER/.pandoc && ln -s /opt/pandoc/templates /home/$USER/.pandoc/templates
+
+## add these to the global environment so they are avialable to the RStudio user 
+echo "HTTR_LOCALHOST=$HTTR_LOCALHOST" >> /etc/R/Renviron.site
+echo "HTTR_PORT=$HTTR_PORT" >> /etc/R/Renviron.site
+#env | cat >> /etc/R/Renviron.site
+
 ## User should own their own home directory and all containing files (including these templates)
 chown -R $USER /home/$USER
+
+
+exec /usr/lib/rstudio-server/bin/rserver
