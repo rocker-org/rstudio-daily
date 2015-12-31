@@ -36,8 +36,7 @@ RUN dpkg -i rstudio-server-daily-amd64.deb \
   && mkdir -p /opt/pandoc/templates && tar zxf 1.15.2.1.tar.gz \
   && cp -r pandoc-templates*/* /opt/pandoc/templates && rm -rf pandoc-templates* \
   && mkdir /root/.pandoc && ln -s /opt/pandoc/templates /root/.pandoc/templates \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/
+  && apt-get clean
 
 ## Ensure that if both httr and httpuv are installed downstream, oauth 2.0 flows still work correctly.
 RUN echo '\n\
