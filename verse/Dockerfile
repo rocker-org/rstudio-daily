@@ -114,7 +114,6 @@ RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInst
     nycflights13 \
     quantreg \
     Rcpp \
-    rJava \
     roxygen2 \
     RMySQL \
     RPostgreSQL \
