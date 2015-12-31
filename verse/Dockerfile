@@ -13,7 +13,6 @@ RUN apt-get update \
     texlive-latex-extra \
     texinfo \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/ \
   && cd /usr/share/texlive/texmf-dist \
   && wget http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip \
   && unzip inconsolata.tds.zip \
@@ -56,7 +55,6 @@ RUN apt-get update \
     vim \
   && R CMD javareconf \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/ \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install the Hadleyverse packages (and some close friends). 
