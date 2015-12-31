@@ -30,14 +30,17 @@ RUN apt-get update \
     gdal-bin \
     icedtea-netx \
     libatlas-base-dev \
+    libbz2-dev \
     libcairo2-dev \
     libgsl0-dev \
     libgdal1-dev \
     libgeos-dev \
     libgeos-c1v5 \
+    liblzma-dev \
     librdf0-dev \
     libssl-dev \
     libmysqlclient-dev \
+    libpcre3-dev \
     libpq-dev \
     libsqlite3-dev \
     libv8-dev \
@@ -115,6 +118,7 @@ RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("BiocInst
     quantreg \
     Rcpp \
     roxygen2 \
+    rJava \
     RMySQL \
     RPostgreSQL \
     RSQLite \
