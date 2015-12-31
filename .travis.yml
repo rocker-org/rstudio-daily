@@ -1,0 +1,20 @@
+sudo: required
+
+services:
+  - docker
+
+## Make sure all containers build without error.
+## r-devel times out on build, so just pull instead
+
+before_install: 
+  - docker build -t rocker/rstudio-daily .
+  - docker build -t rocker/rstudio-daily:verse verse
+
+## Crude test, see if our container stays up after launch
+script:
+  - docker run -ti rocker/rstudio-daily R --version
+  - docker run -d --name rstudio rocker/rstudio-daily
+  - sleep 5 && docker ps | grep rstudio-daily
+  - docker rm -f $(docker ps -a -q)
+
+ 
