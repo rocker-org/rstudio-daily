@@ -1,9 +1,10 @@
+[![Build Status](https://travis-ci.org/rocker-org/rstudio-daily.svg)](https://travis-ci.org/rocker-org/rstudio-daily)
 
-rocker
-======
 
-Dockerfiles for different Docker containers of interest to R users.
+rocker/rstudio-daily
+======================
 
-Work in progress; talk to @eddelbuettel and @cboettig about how to get involved.
+- `rocker/rstudio-daily:latest` Provides the latest daily build of pre-release RStudio-server. The image builds off of `rocker/drd`, using development R (`RD`) as the R engine for RStudio. `rocker/drd` and this image are both rebuilt daily.
 
-Documentation is being added at the [Wiki](https://github.com/rocker-org/rocker/wiki).
+- `rocker/rstudio-daily:verse` (Dockerfile in `verse/`) adds the `rocker/hadleyverse` recipe (with occassional adjustment for development R) on top of the `rocker/rstudio-daily` image.
+
