@@ -26,7 +26,6 @@ RUN apt-get update \
     libssl-dev \
     psmisc \
     python-setuptools \
-    runit \
     sudo 
 
 RUN dpkg -i rstudio-server-daily-amd64.deb \
@@ -58,8 +57,6 @@ RUN usermod -l rstudio docker \
   && echo '"\e[6~": history-search-backward' >> /etc/inputrc \
   && echo "rstudio:rstudio" | chpasswd
 
-COPY run.sh /etc/service/rstudio/run
-
 EXPOSE 8787
 
 ## Have RStudio run with the pre-release R as well
@@ -67,4 +64,13 @@ RUN cd /usr/local/bin \
   && mv Rdevel R \
   && mv Rscriptdevel Rscript
 
-CMD ["runsvdir", "/etc/service"] 
+## Use s6
+RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/download/v1.11.0.1/s6-overlay-amd64.tar.gz \
+  && tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+
+
+COPY userconf.sh /etc/cont-init.d/conf
+COPY run.sh /etc/services.d/rstudio/run
+
+
+CMD ["/init"]
