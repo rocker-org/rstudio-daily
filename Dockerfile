@@ -8,8 +8,8 @@ ENV PATH /usr/lib/rstudio-server/bin/:$PATH
 
 RUN apt-get update \
   && apt-get install -y -t unstable --no-install-recommends \
-    libxml2-dev \
-  && install2.r httr XML downloader \
+    libxml2-dev libssl-dev \
+  && install2.r xml2 httr downloader XML \
   && wget --no-check-certificate \
     https://raw.githubusercontent.com/rocker-org/rstudio-daily/master/latest.R \
   && Rscript latest.R && rm latest.R 
@@ -23,7 +23,6 @@ RUN apt-get update \
     libedit2 \
     libcurl4-openssl-dev \
     libssl1.0.0 \
-    libssl-dev \
     psmisc \
     python-setuptools \
     sudo 
