@@ -32,7 +32,7 @@ RUN apt-get update \
     libbz2-dev \
     libcairo2-dev \
     libgsl0-dev \
-    libgdal1-dev \
+    libgdal-dev \
     libgeos-dev \
     libgeos-c1v5 \
     liblzma-dev \
