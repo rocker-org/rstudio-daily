@@ -25,6 +25,7 @@ RUN apt-get update \
     libapparmor1 \
     libedit2 \
     libcurl4-openssl-dev \
+    lsb-release \
     psmisc \
     python-setuptools \
     sudo 
