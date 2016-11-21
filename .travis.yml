@@ -8,7 +8,6 @@ services:
 
 before_install: 
   - docker build -t rocker/rstudio-daily .
-  - docker build -t rocker/rstudio-daily:verse verse
 
 ## Crude test, see if our container stays up after launch
 script:
