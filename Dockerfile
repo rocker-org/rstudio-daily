@@ -14,7 +14,10 @@ RUN apt-get update \
     https://raw.githubusercontent.com/rocker-org/rstudio-daily/master/latest.R \
   && Rscript latest.R && rm latest.R 
 
+RUN sh -c "echo 'deb http://ftp.de.debian.org/debian jessie main' >> /etc/apt/sources.list"
+
 RUN apt-get update \
+  && apt-get install -t stable libssl1.0.0 \
   && apt-get install -y -t unstable --no-install-recommends \
     ca-certificates \
     file \
@@ -22,7 +25,7 @@ RUN apt-get update \
     libapparmor1 \
     libedit2 \
     libcurl4-openssl-dev \
-    libssl1.0.0 \
+    lsb-release \
     psmisc \
     python-setuptools \
     sudo 
