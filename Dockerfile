@@ -4,7 +4,7 @@ FROM rocker/rstudio:devel
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     libxml2-dev libssl-dev procps rrdtool \
-  && install2.r xml2 httr downloader XML \
+  && install2.r xml2 httr \
   && wget --no-check-certificate \
     https://raw.githubusercontent.com/rocker-org/rstudio-daily/master/latest.R \
   && Rscript latest.R && rm latest.R
