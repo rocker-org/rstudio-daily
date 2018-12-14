@@ -6,8 +6,8 @@ services:
 ## Make sure all containers build without error.
 ## r-devel times out on build, so just pull instead
 
-before_install: 
-  - docker build -t rocker/rstudio-daily .
+before_install:
+  - docker build -t rocker/rstudio-daily latest
 
 ## Crude test, see if our container stays up after launch
 script:
@@ -16,4 +16,4 @@ script:
   - sleep 5 && docker ps | grep rstudio-daily
   - docker rm -f $(docker ps -a -q)
 
- 
+
